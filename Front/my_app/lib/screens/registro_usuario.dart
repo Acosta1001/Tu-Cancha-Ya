@@ -106,6 +106,7 @@ class RegisterPage extends StatelessWidget {
                         duration: Duration(seconds: 3),
                       ),
                     );
+                    Navigator.pop(context); 
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(

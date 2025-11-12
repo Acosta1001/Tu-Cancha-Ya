@@ -39,6 +39,7 @@ class ApiService {
           'password': password,
         },
       );
+      print('Respuesta: ${response.data}');
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         return true;
@@ -46,6 +47,7 @@ class ApiService {
         return false;
       }
     } catch (e) {
+      print('Error al registrar usuario: $e');
       return false;
     }
   }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 // ---------------------- INICIO (RESERVAS) ----------------------
-class HomePage extends StatelessWidget {
+class ReservaCanchas extends StatelessWidget {
+
+  ReservaCanchas({super.key});
+  
   final List<String> canchas = [
     'Cancha 1 - Sintética',
     'Cancha 2 - Fútbol 5',

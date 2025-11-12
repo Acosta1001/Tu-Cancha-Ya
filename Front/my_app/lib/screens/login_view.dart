@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/screens/reservs_csnchs.dart';
 import 'registro_usuario.dart';
 
 // ---------------------- LOGIN ----------------------
@@ -44,6 +45,13 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ReservaCanchas()));
+              },
+              child: Text("Ingresar",style:TextStyle(color: Colors.black) ,),
+              ),
             TextButton(
               onPressed: () {
                 Navigator.push(context,

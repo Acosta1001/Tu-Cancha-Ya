@@ -27,3 +27,10 @@ app.include_router(usuario.router, tags=["usuarios"])
 @app.get("/")
 async def root():
     return {"mensaje": "API TuCanchaYa activa y conectada"}
+
+# ejemplo de verificación
+import bcrypt
+
+def verificar_password(password_plain: str, password_hashed: str) -> bool:
+    return bcrypt.checkpw(password_plain.encode('utf-8'), password_hashed.encode('utf-8'))
+
