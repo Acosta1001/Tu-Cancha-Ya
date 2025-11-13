@@ -6,7 +6,7 @@ class ApiService {
   ApiService()
       : dio = Dio(
           BaseOptions(
-            baseUrl: 'http://192.168.0.14:8000', // Cambia si usas emulador
+            baseUrl: 'http://172.47.14.96:8000', // Cambia si usas emulador
             headers: {'Content-Type': 'application/json'},
           ),
         );
@@ -62,6 +62,29 @@ class ApiService {
         return false;
       }
     } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> login(
+      String email, String password) async {
+    try {
+      final response = await dio.post(
+        '/usuario/login',
+        data: {
+          'email': email,
+          'password': password,
+        },
+      );
+      print('Respuesta: ${response.data}');
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print('Error al registrar usuario: $e');
       return false;
     }
   }

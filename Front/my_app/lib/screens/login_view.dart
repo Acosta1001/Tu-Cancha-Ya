@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/screens/reservs_csnchs.dart';
 import 'registro_usuario.dart';
+import 'package:my_app/services/api_servivios.dart';
+
 
 // ---------------------- LOGIN ----------------------
 class LoginPage extends StatelessWidget {
@@ -46,9 +48,31 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ReservaCanchas()));
+              onPressed: () async {
+                final apiService = ApiService();
+                final bool exito = await apiService.login(
+                  emailController.text,
+                  passwordController.text,
+                );
+                if (exito) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('✅ Usuario registrado correctamente'),
+                        backgroundColor: Colors.green,
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ReservaCanchas()));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('❌ Error al registrar usuario'),
+                        backgroundColor: Colors.red,
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  }
               },
               child: Text("Ingresar",style:TextStyle(color: Colors.black) ,),
               ),
